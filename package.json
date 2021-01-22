@@ -54,6 +54,7 @@
     ]
   },
   "devDependencies": {
+    "msw": "^0.25.0",
     "prop-types": "^15.7.2"
   }
 }

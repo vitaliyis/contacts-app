@@ -1,3 +1,4 @@
+import React from "react";
 import Container from "@material-ui/core/Container";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -5,7 +6,6 @@ import { useContacts } from "./useContacts";
 import Typography from "@material-ui/core/Typography";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { ContactsTable } from "./ContactsTable";
-import { useEffect, useState } from "react";
 import { Box } from "@material-ui/core";
 import { ToggleDataViewMode } from "./ToggleDataViewMode";
 import { DATA_VIEW_MODES } from "./constants";
@@ -44,11 +44,11 @@ export const Contacts = () => {
         <Grid item xs={12}>
           {(() => {
             if (contacts.isLoading) {
-              return <CircularProgress />;
+              return <CircularProgress data-testid="contacts-loader" />;
             }
 
             if (contacts.isError) {
-              return <div>...Error</div>;
+              return <div data-testid="contacts-error">...Error</div>;
             }
 
             if (dataViewMode === DATA_VIEW_MODES.TABLE) {
@@ -56,7 +56,7 @@ export const Contacts = () => {
             }
 
             if (dataViewMode === DATA_VIEW_MODES.GRID) {
-              return "grid";
+              return <div data-testid="contacts-grid-container">grid</div>;
             }
           })()}
         </Grid>
